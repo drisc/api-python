@@ -211,10 +211,10 @@ class RAClient:
             i: Game ID to query
 
         Information:
-            Unless you are explicitly wanting summary progress details for specific game IDS, get_user_completion_progress will almost certainly be better-suited for your use case.
+            Unless you are explicitly wanting summary progress details for specific game IDs, get_user_completion_progress will almost certainly be better-suited for your use case.
         """
         warnings.warn(
-            "Unless you are explicitly wanting summary progress details for specific game IDS, get_user_completion_progress will almost certainly be better-suited for your use case.",
+            "Unless you are explicitly wanting summary progress details for specific game IDs, get_user_completion_progress will almost certainly be better-suited for your use case.",
             Warning,
             stacklevel=2,
         )
