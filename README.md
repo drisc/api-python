@@ -17,8 +17,8 @@
 ## Status
 This library is currently a work in progress, endpoint and test coverage can be found below:
 
-ℹ️ &nbsp;Endpoint coverage: 8 of 30  
-ℹ️ &nbsp;Test coverage: 0 of 30
+ℹ️ &nbsp;Endpoint coverage: 42 of 42
+ℹ️ &nbsp;Test coverage: 0 of 42
 
 ## Features
 
