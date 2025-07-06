@@ -134,6 +134,8 @@ class RAClient:
             g: Game ID to query
             a: If set to 1 also return the user's awards, default = 0
         """
+        if awards not in [0, 1]:
+            raise ValueError("Invalid awards value. Must be 0 or 1.")
         result = self._call_api(
             "API_GetGameInfoAndUserProgress.php?", {"u": user, "g": game, "a": awards}
         ).json()
