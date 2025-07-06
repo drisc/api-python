@@ -243,7 +243,7 @@ class RAClient:
         return result
 
     def get_user_summary(
-        self, user: str, recent_games: int = 0, recent_cheevos: int = 10
+        self, user: str, games: int = 0, achievements: int = 10
     ) -> dict:
         """
         Get a user's exhaustive profile metadata
@@ -266,7 +266,7 @@ class RAClient:
         )
         result = self._call_api(
             "API_GetUserSummary.php?",
-            {"u": user, "g": recent_games, "a": recent_cheevos},
+            {"u": user, "g": games, "a": achievements},
         ).json()
         return result
 
@@ -362,7 +362,7 @@ class RAClient:
         result = self._call_api("API_GetGame.php?", {"i": game}).json()
         return result
 
-    def get_game_extended(self, game: int, set_level: int = 3) -> dict:
+    def get_game_extended(self, game: int, focus: int = 3) -> dict:
         """
         Get extended metadata about a game
 
@@ -370,10 +370,10 @@ class RAClient:
             i: The game ID to query
             f: Set to 3 for Official achievements, 5 to see Unofficial / Demoted achievements, default = 3
         """
-        if set_level not in [3, 5]:
+        if focus not in [3, 5]:
             raise ValueError("Invalid set type selected. Must be 3 or 5.")
         result = self._call_api(
-            "API_GetGameExtended.php?", {"i": game, "f": set_level}
+            "API_GetGameExtended.php?", {"i": game, "f": focus}
         ).json()
         return result
 
@@ -398,7 +398,7 @@ class RAClient:
         return result
 
     def get_achievement_distribution(
-        self, game: int, achievement_type: int = 0, set_level: int = 3
+        self, game: int, achievement_type: int = 0, focus: int = 3
     ) -> dict:
         """
         Get how many players have unlocked how many achievements for a game
@@ -410,11 +410,11 @@ class RAClient:
         """
         if achievement_type not in [0, 1]:
             raise ValueError("Invalid achievement type. Must be 0 or 1.")
-        if set_level not in [3, 5]:
+        if focus not in [3, 5]:
             raise ValueError("Invalid set type selected. Must be 3 or 5.")
         result = self._call_api(
             "API_GetAchievementDistribution.php?",
-            {"i": game, "h": achievement_type, "f": set_level},
+            {"i": game, "h": achievement_type, "f": focus},
         ).json()
         return result
 
@@ -498,7 +498,9 @@ class RAClient:
         result = self._call_api("API_GetConsoleIDs.php?", {}).json()
         return result
 
-    def get_game_list(self, system: int, has_cheevos: int = 0, hashes: int = 0) -> dict:
+    def get_game_list(
+        self, system: int, has_achievements: int = 0, hashes: int = 0
+    ) -> dict:
         """
         Get the complete list of games for a console
 
@@ -507,12 +509,12 @@ class RAClient:
             f: If 1, only returns games that have achievements (default = 0)
             h: If 1, also return the supported hashes for games (default = 0)
         """
-        if has_cheevos not in [0, 1]:
+        if has_achievements not in [0, 1]:
             raise ValueError("Invalid has_cheevos value. Must be 0 or 1.")
         if hashes not in [0, 1]:
             raise ValueError("Invalid hashes value. Must be 0 or 1.")
         result = self._call_api(
-            "API_GetGameList.php?", {"i": system, "f": has_cheevos, "h": hashes}
+            "API_GetGameList.php?", {"i": system, "f": has_achievements, "h": hashes}
         ).json()
         return result
 
