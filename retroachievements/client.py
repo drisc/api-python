@@ -110,14 +110,16 @@ class RAClient:
         ).json()
         return result
 
-    def get_user_achievements_earned_on_day(self, user: str, date: int) -> dict:
+    def get_user_achievements_earned_on_day(self, user: str, date: str) -> dict:
         """
         Get a user's achievements earned on a specific day
 
         Params:
             u: Username or ULID to query
-            d: Date in YYYY-MM-DD format
+            d: Date in YYYY-MM-DD format, default = now
         """
+        if date is None:
+            date = datetime.date.today().strftime("%Y-%m-%d")
         result = self._call_api(
             "API_GetAchievementsEarnedOnDay.php?", {"u": user, "d": date}
         ).json()
