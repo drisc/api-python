@@ -1,0 +1,13 @@
+# Python
+*.pyc
+.venv/
+__pycache__/
+
+# macOS
+.DS_Store
+.Spotlight-V100
+.Trashes
+
+# VS Code
+.vscode/
+.editorconfig
