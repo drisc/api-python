@@ -505,7 +505,7 @@ class RAClient:
         Get the complete list of games for a console
 
         Params:
-            a: The system ID to query
+            i: The system ID to query
             f: If 1, only returns games that have achievements (default = 0)
             h: If 1, also return the supported hashes for games (default = 0)
         """
